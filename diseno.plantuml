@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+Biblioteca "1" *-- "n" Recurso : contiene
+Recurso <|-- Libros
+Recurso <|-- Mapas
+Recurso <|-- DVD
+Recurso <|-- Planos
+Recurso <|--Fotografias
+
+class Recurso{
+    nombre
+    autor
+   Tipo_de_recurso
+    prestado : bool
+    asignar_tiporecurso()
+    asignar_nombre()
+    asignar_autor()
+    entregar_tiporecurso()
+    entregar_nombre()
+    entregar_autor()
+    entregar_estado()
+    cambiar_estado()
+    mostrar_info()
+}
+
+class Biblioteca{
+    nombre
+    Recursos
+    txt
+    buscador
+    leer_recursos()
+    actualizar_biblioteca()
+}
+
+
+Biblioteca "1" *-- "1" BuscadorRecursos:contiene
+SistemaBibliotecas "1" *-- "n" Biblioteca:contiene
+class BuscadorRecursos{
+    RecursosEncontrados
+    por_autor(Tipo_recurso , autor)
+    por_nombre(Tipo_recurso , nombre)
+    por_biblioteca(Tipo_recurso )
+    limpiar_librosEncontrados()
+    entregar_librosEncontrados()
+}
+
+class SistemaBibliotecas{
+    Librerias
+}
+@enduml
